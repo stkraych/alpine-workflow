@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: cicd-image/my-nginx-app:latest
+          tags: seeshellol/cicd-image:latest
