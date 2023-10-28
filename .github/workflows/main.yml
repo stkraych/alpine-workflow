@@ -1,4 +1,4 @@
-name: ci/cd
+name: ci
 
 on:
   push:
@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/gitactionsflow:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-nginx-app:latest
