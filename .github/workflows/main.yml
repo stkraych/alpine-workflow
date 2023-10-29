@@ -23,9 +23,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Push
-        run: |
-          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-          docker-compose -f seeshellol/my-comopse-nginx/docker-compose.yml push
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: docker-compose -f seeshellol/my-comopse-nginx/docker-compose.yml push
