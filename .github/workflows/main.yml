@@ -32,4 +32,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: seeshellol/cicd-image:latest, seeshellol/cicd-image:${{ steps.set_version.outputs.VERSION }}
+          tags: seeshellol/cicd-image:${{ steps.set_version.outputs.VERSION }}
