@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - docker_compose
-
-env:
-  REGISTRY: docker.io
-  IMAGE_NAME: seeshellol/my-compose-nginx
 jobs:
   build:
     runs-on: ubuntu-latest
