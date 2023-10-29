@@ -4,24 +4,26 @@ name: ci
 on:
   push:
     branches:
-      - "docker_compose"
+      - 'master'
 
 jobs:
-  build:
+  bake:
     runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
         uses: actions/checkout@v4
       -
-        name: Set up Docker Compose
-        run: docker-compose -f docker-compose.yml build
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
       -
-        name: Login to Docker Hub
+        name: Login to DockerHub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Push
-        run: docker-compose -f seeshellol/my-comopse-nginx/docker-compose.yml push
+        name: Build and push
+        uses: docker/bake-action@v4
+        with:
+          push: true
