@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  gather_facts: no
+  become: no
+
+  vars:
+    image_name: "python-app"
+    image_tag: "v0.2"
+    listen_port: "8080"
+
+  tasks:
+    - name: Build an image and push it to a public repo
+      community.docker.docker_image:
+        build:
+          path: ./
+        name: "{{image_name}}"
+        repository: "seeshellol/{{image_name}}:{{image_tag}}"
+        push: true
+        source: build
+    - name: Run a container
+      docker_container:
+        name: python-app-container
+        image: "seeshellol/{{image_name}}:{{image_tag}}"
+        ports:
+         - "{{listen_port}}:{{listen_port}}"
+        env:
+          PORT: "{{ listen_port }}"
+
+
