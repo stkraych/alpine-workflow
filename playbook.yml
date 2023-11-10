@@ -14,15 +14,16 @@
         build:
           path: ./
         name: "{{image_name}}"
-        repository: "seeshellol/{{image_name}}:{{image_tag}}"
+        repository: "seeshellol/{{ image_name }}:{{ image_tag }}"
         push: true
         source: build
+        
     - name: Run a container
       docker_container:
         name: python-app-container
-        image: "seeshellol/{{image_name}}:{{image_tag}}"
+        image: "seeshellol/{{ image_name }}:{{ image_tag }}"
         ports:
-         - "{{listen_port}}:{{listen_port}}"
+         - "{{ listen_port }}:{{ listen_port }}"
         env:
           PORT: "{{ listen_port }}"
 
