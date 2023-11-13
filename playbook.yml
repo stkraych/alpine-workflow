@@ -1,0 +1,17 @@
+- hosts: localhost
+  gather_facts: no
+  become: yes
+    image_name: "seeshellol/python-app"
+    image_tag: "v0.1"
+    listen_port: "8080"
+
+  tasks:
+    - name: Build Docker image
+  docker_image:
+    name: "{{ image_name }}:{{ image_tag }}"
+    build:
+      path: .
+    repository: seeshellol/python-app
+    tag: 1
+    push: yes
+    source: build
