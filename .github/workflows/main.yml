@@ -13,22 +13,15 @@ jobs:
       - uses: editorconfig-checker/action-editorconfig-checker@main
       - run: editorconfig-checker
   lint-and-style:
-    name: Code Lint and Style
     runs-on: ubuntu-latest
+    name: Checks
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install "black<23" pylint==v3.0.0a3 mypy==v0.902
-      - name: Check code style with black
-        run: black --diff --check $(git ls-files '*.py')
-      - name: Run pylint
-        run: pylint --disable=all --enable=unused-import $(git ls-files '*.py')
-      - name: Run mypy
-        run: mypy --strict $(git ls-files '*.py')
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+    - run: pip install --upgrade pip
+    - run: pip install "black<23" pylint==v3.0.0a3 mypy==v0.902
+    - run: black --diff --check $(git ls-files '*.py')
+    - run: pylint --disable=all --enable=unused-import $(git ls-files '*.py')
+    - run: mypy --strict $(git ls-files '*.py')
