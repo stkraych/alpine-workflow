@@ -28,6 +28,7 @@ jobs:
           pip install -r requirements.txt
           pip install black
           pip install pylint
+          pip install mypy
       - name: Check code style with black
         run: black --diff --check $(git ls-files '*.py')
       - name: Run pylint
