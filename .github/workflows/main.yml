@@ -1,7 +1,7 @@
-name: 
+name: CI Feature branch
 
 on:
   push:
     branches:
-      - "M1-4-2-CI-Practice/*"
+      - "M1-4-2-CI-Practice"
 
