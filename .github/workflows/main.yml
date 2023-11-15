@@ -41,5 +41,18 @@ jobs:
           files: '**/*.md'
           ignore: node_modules
           version: 0.28.1
+  unit-testing:
+    runs-on: ubuntu-latest 
+    
+    steps:
+    - name : Checkout code
+      uses : actions/checkout@v2
+      
+    - name : Install Packages 
+      run : pip install pytest
+      
+    - name : Run tests 
+      working-directory: ./app
+      run : pytest test.py
       
       
