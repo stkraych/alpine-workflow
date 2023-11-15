@@ -53,6 +53,6 @@ jobs:
       
     - name : Run tests 
       working-directory: ./app
-      run : pytest test.py
+      run : pytest app_test.py
       
       
