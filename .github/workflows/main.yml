@@ -40,7 +40,6 @@ jobs:
           config: .markdownlint.json
           files: '**/*.md'
           ignore: node_modules
-          version: 0.28.1
   unit-testing:
     runs-on: ubuntu-latest 
     
@@ -49,7 +48,8 @@ jobs:
       uses : actions/checkout@v2
       
     - name : Install Packages 
-      run : pip install pytest
+      run : pip install pytest && pip install Flask
+
       
     - name : Run tests 
       working-directory: ./app
