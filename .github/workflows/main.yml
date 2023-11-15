@@ -13,10 +13,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: editorconfig-checker/action-editorconfig-checker@main
       - run: editorconfig-checker
-  lint-and-style:
-    name: Code Lint and Style
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Python
@@ -68,8 +64,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
