@@ -104,4 +104,4 @@ jobs:
     - name: List Docker images
       run: docker images  
     - name: Push to Dockerhub
-      run: docker push  ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ github.sha }}
+      run: docker push "${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ github.sha }}"
