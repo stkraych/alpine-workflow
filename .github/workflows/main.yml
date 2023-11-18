@@ -86,4 +86,4 @@ jobs:
    steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag python-app:${{ github.sha }}
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}python-app:${{ github.sha }}
