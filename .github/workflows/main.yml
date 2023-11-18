@@ -86,11 +86,11 @@ jobs:
    steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ github.sha }}
+      run: docker build . --file Dockerfile --tag python-app:${{ github.sha }}
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: '${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ github.sha }}'
+        image-ref: 'python-app:${{ github.sha }}'
         format: 'table'
         exit-code: '1'
         ignore-unfixed: true
@@ -105,4 +105,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
   
     - name: Push to Dockerhub
-      run: docker push  ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ github.sha }}
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ github.sha }}
