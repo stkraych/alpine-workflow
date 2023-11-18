@@ -91,7 +91,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ github.sha }}
+      run: docker build . --file Dockerfile --tag "${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ github.sha }}"
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
