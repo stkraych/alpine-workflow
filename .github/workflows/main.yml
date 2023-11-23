@@ -20,7 +20,7 @@ jobs:
           python-version: 3.x
       - name: Install python
         run: |
-          cd function
+          cd ./app
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
       # - name: Check code style with black
