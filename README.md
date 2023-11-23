@@ -38,7 +38,7 @@ Create a GitHub Actions pipeline that runs on commit to a feature branch (i.e. n
 - SAST - SonarCloud; Review code smells and security issues
 - SCA - Snyk; review security issues
 - Build a Docker image. Use Git commit SHA as an Image tag.
-- Scan the built image with `Trivy`
+- Scan the built image with `**Trivy**`
 - Push the built image to your Docker HUB account
 - (optional) Add CONTRIBUTORS guide. Follow [this](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) document from GitHUb.
 
