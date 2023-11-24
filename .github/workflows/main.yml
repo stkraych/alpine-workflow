@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  editorconfig:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,10 +23,10 @@ jobs:
           cd ./app
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
-      # - name: Check code style with black
-      #   run: black --diff --check $(git ls-files '*.py')
-      # - name: Run pylint
-      #   run: pylint --disable=all --enable=unused-import $(git ls-files '*.py')
+      - name: Check code style with black
+        run: black --diff --check $(git ls-files '*.py')
+      - name: Run pylint
+        run: pylint --disable=all --enable=unused-import $(git ls-files '*.py')
       # - name: Lint with Markdown-lint
       #   uses: articulate/actions-markdownlint@v1
       #   with:
