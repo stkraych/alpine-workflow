@@ -53,8 +53,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    
 
-  security: 
-
+  security:   
     runs-on: ubuntu-latest
     needs: test
     steps:
@@ -62,8 +61,8 @@ jobs:
       - uses: snyk/actions/setup@master
       - name: Snyk monitor
         run: |
-        pip install -r requirements.txt
-        snyk test
+          pip install -r requirements.txt
+          snyk test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
