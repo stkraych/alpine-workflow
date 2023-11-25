@@ -98,11 +98,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set up Docker Compose
-        run: |
-           apt install -y docker-compose
-           docker-compose --version
+         run: |
+            apt install -y docker-compose
+            docker-compose --version
       - name: Build and Run Docker Compose
-        run:  docker-compose up --build -d
+         run:  docker-compose up --build -d
 
   contrib-readme-job:
       runs-on: ubuntu-latest
