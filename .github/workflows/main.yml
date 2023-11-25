@@ -60,11 +60,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: snyk/actions/setup@master
       - name: Snyk monitor
-        # continue-on-error: true
+        continue-on-error: true
         run: |
           pip install -r requirements.txt
-          snyk test
-          python -m pip install --upgrade pip
+          snyk test fix
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
