@@ -96,7 +96,8 @@ jobs:
     needs: docker
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Set up Docker Compose
         run: apt install -y docker-compose
       - name: Build and Run Docker Compose
