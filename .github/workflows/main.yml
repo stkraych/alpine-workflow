@@ -93,16 +93,14 @@ jobs:
       run: docker push seeshellol/python-app:${{ github.sha }}
   
   docker-compose:
-    runs-on: ubuntu-latest
     needs: docker
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
       - uses: actions/checkout@v4
       - name: Set up Docker Compose
         run: |
            apt install -y docker-compose
            docker-compose --version
-
       - name: Build and Run Docker Compose
         run:  docker-compose up --build -d
 
