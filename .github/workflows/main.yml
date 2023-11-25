@@ -63,7 +63,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           snyk test
-          snyk fix
+          snyk fix --all-projects
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
