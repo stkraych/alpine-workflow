@@ -110,4 +110,4 @@ jobs:
         - name: Contribute List
           uses: akhilmhdh/contributors-readme-action@v2.3.6
           env:
-             GITHUB_TOKEN: ${{ secrets.TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.TOKEN }}
