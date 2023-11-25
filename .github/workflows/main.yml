@@ -44,7 +44,7 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v4
-      - uses: gitleaks/gitleaks-action@v3
+      - uses: gitleaks/gitleaks-action@v2
         with:
           fetch-depth: 0
         env:
