@@ -40,7 +40,7 @@ jobs:
           files: '**/*.md'
           ignore: node_modules
       - name : Install pytest 
-        run : pip install pytest 
+        run : pip install pytest flask
       - name : Run tests 
         working-directory: ./app
         run : python -m unittest app_test.py
