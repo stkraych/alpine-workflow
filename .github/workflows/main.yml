@@ -53,17 +53,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    
 
-  vulnerabilities:   
+  security:   
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - uses: actions/checkout@master
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
+      - uses: actions/checkout@v4
+      - uses: snyk/actions/setup@master
+      - name: Snyk monitor
+        continue-on-error: true
+        run: |
+          pip install -r requirements.txt
+          snyk test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          command: monitor
+
   # docker:
   #  runs-on: ubuntu-latest
   #  steps:
