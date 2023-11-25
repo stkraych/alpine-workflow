@@ -23,7 +23,7 @@ jobs:
           cd ./app
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
-  check:
+  test:
      runs-on: ubuntu-latest
      needs: build
      steps:
@@ -39,21 +39,11 @@ jobs:
           config: .markdownlint.json
           files: '**/*.md'
           ignore: node_modules
-
-  # unit-testing:
-  #   runs-on: ubuntu-latest 
-    
-  #   steps:
-  #   - name : Checkout code
-  #     uses : actions/checkout@v2
-      
-  #   - name : Install Packages 
-  #     run : pip install pytest && pip install Flask
-
-      
-  #   - name : Run tests 
-  #     working-directory: ./app
-  #     run : python -m unittest app_test.py
+      - name : Install pytest 
+        run : pip install pytest 
+      - name : Run tests 
+        working-directory: ./app
+        run : python -m unittest app_test.py
 
   # scan:
   #   name: gitleaks
