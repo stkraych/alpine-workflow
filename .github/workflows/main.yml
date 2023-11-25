@@ -98,7 +98,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Set up Docker Compose
-        run: apt install -y docker-compose
+        run: sudo apt install -y docker-compose
       - name: Build and Run Docker Compose
         run: docker-compose up --build -d
 
