@@ -28,17 +28,17 @@ jobs:
      needs: build
      steps:
       - uses: actions/checkout@v4
-      - name: Check code style with black and run pylint
+      - name: Install and check code style with black and run pylint
         run:  |
          pip install black pylint
          black --diff --check $(git ls-files '*.py')
          pylint --disable=all --enable=unused-import $(git ls-files '*.py')
-    #   - name: Lint with Markdown-lint
-    #     uses: articulate/actions-markdownlint@v1
-    #     with:
-    #       config: .markdownlint.json
-    #       files: '**/*.md'
-    #       ignore: node_modules
+      - name: Lint with Markdown-lint
+        uses: articulate/actions-markdownlint@v1
+        with:
+          config: .markdownlint.json
+          files: '**/*.md'
+          ignore: node_modules
 
   # unit-testing:
   #   runs-on: ubuntu-latest 
