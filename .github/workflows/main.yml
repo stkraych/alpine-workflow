@@ -92,17 +92,6 @@ jobs:
     - name: Push to Dockerhub
       run: docker push seeshellol/python-app:${{ github.sha }}
   
-  docker-compose:
-    needs: docker
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-      - uses: actions/checkout@v2
-      - name: Set up Docker Compose
-        run: apt install -y docker-compose
-      - name: Build and Run Docker Compose
-        run: docker-compose up --build -d
-
   contrib-readme-job:
       runs-on: ubuntu-latest
       name: A job to automate contrib in readme
