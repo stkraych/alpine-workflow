@@ -10,6 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
       - uses: actions/checkout@v4
       - uses: editorconfig-checker/action-editorconfig-checker@main
       - run: editorconfig-checker
@@ -90,6 +91,20 @@ jobs:
         severity: 'CRITICAL,HIGH'
     - name: Push to Dockerhub
       run: docker push seeshellol/python-app:${{ github.sha }}
+  
+  docker-compose:
+    runs-on: ubuntu-latest
+    needs: docker
+    steps:
+      - name: Checkout code
+      - uses: actions/checkout@v4
+      - name: Set up Docker Compose
+        run: |
+           apt install -y docker-compose
+           docker-compose --version
+
+      - name: Build and Run Docker Compose
+        run:  docker-compose up --build -d
 
   contrib-readme-job:
       runs-on: ubuntu-latest
