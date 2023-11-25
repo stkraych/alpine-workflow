@@ -25,7 +25,8 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
       - name: Check code style with black and run pylint
         run:  |
-         black --check --verbose .
+         pip install black
+         black --diff --check $(git ls-files '*.py')
          pylint --disable=all --enable=unused-import $(git ls-files '*.py')
     #   - name: Lint with Markdown-lint
     #     uses: articulate/actions-markdownlint@v1
